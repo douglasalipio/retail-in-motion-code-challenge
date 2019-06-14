@@ -8,6 +8,7 @@ import com.douglasalipio.luasforecasts.R
 import com.douglasalipio.luasforecasts.data.FeatureResponse
 import com.douglasalipio.luasforecasts.data.FeatureResult
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class FeatureActivity : DaggerAppCompatActivity() {
@@ -37,6 +38,6 @@ class FeatureActivity : DaggerAppCompatActivity() {
     }
 
     private fun showLoading() {
-
+        refreshView?.setOnRefreshListener { featureModel.fetchData() }
     }
 }

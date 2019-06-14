@@ -3,7 +3,7 @@
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
             <certificates src="system" />
-            <certificates src="@raw/mockyio"/>
+            <certificates src="@raw/luasforecasts"/>
         </trust-anchors>
     </base-config>
 </network-security-config>
