@@ -2,6 +2,7 @@ package com.douglasalipio.luasforecasts.feature
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.douglasalipio.luasforecasts.R
 import com.douglasalipio.luasforecasts.data.FeatureResponse
@@ -32,7 +33,7 @@ class FeatureActivity : DaggerAppCompatActivity() {
     }
 
     private fun showError() {
-
+        Toast.makeText(this, "Something wrong!", Toast.LENGTH_LONG).show()
     }
 
     private fun showLoading() {

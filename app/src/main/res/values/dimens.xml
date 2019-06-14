@@ -1,0 +1,30 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="comment_width">14dp</dimen>
+    <dimen name="comment_height">14dp</dimen>
+    <dimen name="base_margin">8dp</dimen>
+    <dimen name="avatar_width">48dp</dimen>
+    <dimen name="avatar_height">48dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="content_card_padding">5dp</dimen>
+    <dimen name="post_title_margin_top">4dp</dimen>
+    <dimen name="post_title_margin_left">12dp</dimen>
+    <dimen name="small_margin">5dp</dimen>
+    <dimen name="text_granularity">1sp</dimen>
+    <dimen name="text_size_min">16sp</dimen>
+    <dimen name="text_size_max">100sp</dimen>
+    <dimen name="text_big">18sp</dimen>
+    <dimen name="biggest_marge">40dp</dimen>
+    <dimen name="margin_top_large">40dp</dimen>
+    <dimen name="text_large">28sp</dimen>
+    <dimen name="text_biggest">20sp</dimen>
+    <dimen name="margin_top_big">25dp</dimen>
+    <dimen name="comment_button_container">52dp</dimen>
+    <dimen name="comment_button_width">16dp</dimen>
+    <dimen name="comment_button_height">16dp</dimen>
+</resources>
