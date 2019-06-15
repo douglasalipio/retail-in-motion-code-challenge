@@ -1,6 +1,6 @@
 package com.douglasalipio.luasforecasts.di
 
-import com.douglasalipio.luasforecasts.FeatureApplication
+import com.douglasalipio.luasforecasts.LuasApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,13 +15,13 @@ import javax.inject.Singleton
         NetworkModule::class,
         RepositoryModule::class]
 )
-interface AppComponent : AndroidInjector<FeatureApplication> {
+interface AppComponent : AndroidInjector<LuasApplication> {
 
     @Component.Builder
     interface Builder {
 
         @BindsInstance
-        fun application(app: FeatureApplication): Builder
+        fun application(app: LuasApplication): Builder
 
         fun build(): AppComponent
     }

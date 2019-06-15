@@ -1,15 +1,15 @@
-package com.douglasalipio.luasforecasts.feature
+package com.douglasalipio.luasforecasts.forecast
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.douglasalipio.luasforecasts.data.AppRepository
+import com.douglasalipio.luasforecasts.data.LuasRepository
 import com.douglasalipio.luasforecasts.data.FeatureResult
 import com.douglasalipio.luasforecasts.util.io
 import com.douglasalipio.luasforecasts.util.ui
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class FeatureViewModel @Inject constructor(private val repository: AppRepository) : ViewModel() {
+class ForecastViewModel @Inject constructor(private val repository: LuasRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     var featureLiveData: MutableLiveData<FeatureResult> = MutableLiveData()

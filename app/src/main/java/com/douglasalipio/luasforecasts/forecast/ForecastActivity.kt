@@ -1,4 +1,4 @@
-package com.douglasalipio.luasforecasts.feature
+package com.douglasalipio.luasforecasts.forecast
 
 import android.os.Bundle
 import android.util.Log
@@ -11,22 +11,22 @@ import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class FeatureActivity : DaggerAppCompatActivity() {
+class ForecastActivity : DaggerAppCompatActivity() {
 
     @Inject
-    internal lateinit var featureModel: FeatureViewModel
+    internal lateinit var forecastModel: ForecastViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        featureModel.featureLiveData.observe(this, Observer {
+        forecastModel.featureLiveData.observe(this, Observer {
             when (it) {
                 is FeatureResult.Error -> showError()
                 is FeatureResult.Loading -> showLoading()
                 is FeatureResult.FeatureData -> showFeature(it.data)
             }
         })
-        featureModel.fetchData()
+        forecastModel.fetchData()
     }
 
     private fun showFeature(data: List<FeatureResponse>) {
@@ -38,6 +38,6 @@ class FeatureActivity : DaggerAppCompatActivity() {
     }
 
     private fun showLoading() {
-        refreshView?.setOnRefreshListener { featureModel.fetchData() }
+        refreshView?.setOnRefreshListener { forecastModel.fetchData() }
     }
 }

@@ -2,13 +2,13 @@ package com.douglasalipio.luasforecasts.di
 
 import android.app.Application
 import android.content.Context
-import com.douglasalipio.luasforecasts.data.AppDataSource
-import com.douglasalipio.luasforecasts.data.AppRepository
+import com.douglasalipio.luasforecasts.data.LuasDataSource
+import com.douglasalipio.luasforecasts.data.LuasRepository
 import com.douglasalipio.luasforecasts.data.remote.ApiHelper
 import com.douglasalipio.luasforecasts.data.remote.RemoteDataSource
 import com.douglasalipio.luasforecasts.data.remote.ServiceAppFactory
-import com.douglasalipio.luasforecasts.feature.FeatureActivity
-import com.douglasalipio.luasforecasts.feature.FeatureModule
+import com.douglasalipio.luasforecasts.forecast.ForecastActivity
+import com.douglasalipio.luasforecasts.forecast.ForecastModule
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -18,8 +18,8 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = [FeatureModule::class])
-    abstract fun featureAcitivity(): FeatureActivity
+    @ContributesAndroidInjector(modules = [ForecastModule::class])
+    abstract fun featureAcitivity(): ForecastActivity
 }
 
 @Module
@@ -35,8 +35,8 @@ class RepositoryModule {
 
     @Provides
     @Reusable
-    internal fun provideAppRepository(remoteDataSource: RemoteDataSource): AppDataSource =
-        AppRepository(remoteDataSource)
+    internal fun provideAppRepository(remoteDataSource: RemoteDataSource): LuasDataSource =
+        LuasRepository(remoteDataSource)
 }
 
 @Module
