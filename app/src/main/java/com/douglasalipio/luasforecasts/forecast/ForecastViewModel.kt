@@ -12,17 +12,18 @@ import javax.inject.Inject
 class ForecastViewModel @Inject constructor(private val repository: LuasRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    var forecastsLiveData: MutableLiveData<ForecastsResult> = MutableLiveData()
+    var forecastResultLiveData: MutableLiveData<ForecastsResult> = MutableLiveData()
 
     fun fetchData(stop: String) {
         compositeDisposable.add(
             repository.requestForecasts(stop)
                 .subscribeOn(io())
                 .observeOn(ui())
-                .doOnSubscribe { ForecastsResult.Loading }
+                .doOnSubscribe { forecastResultLiveData.postValue(ForecastsResult.Loading()) }
                 .doOnError { ForecastsResult.Error }
                 .subscribe {
-                    forecastsLiveData.postValue(ForecastsResult.ForecastsData(it))
+                    forecastResultLiveData.postValue(ForecastsResult.Loading(true))
+                    forecastResultLiveData.postValue(ForecastsResult.ForecastsData(it))
                 }
         )
     }

@@ -1,4 +1,4 @@
-package com.douglasalipio.luasforecasts.forecast
+package com.douglasalipio.luasforecasts.forecast.adapter
 
 import com.douglasalipio.luasforecasts.R
 import com.xwray.groupie.kotlinandroidextensions.Item

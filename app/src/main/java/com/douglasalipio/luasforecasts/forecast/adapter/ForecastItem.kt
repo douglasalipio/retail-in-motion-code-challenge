@@ -1,4 +1,4 @@
-package com.douglasalipio.luasforecasts.forecast
+package com.douglasalipio.luasforecasts.forecast.adapter
 
 import androidx.core.text.isDigitsOnly
 import com.douglasalipio.luasforecasts.R

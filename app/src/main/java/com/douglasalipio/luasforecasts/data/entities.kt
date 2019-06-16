@@ -33,7 +33,7 @@ data class Tram(
 
 sealed class ForecastsResult {
     object Error : ForecastsResult()
-    object Loading : ForecastsResult()
+    data class Loading(val status: Boolean = false) : ForecastsResult()
     data class ForecastsData(val forecastResponse: ForecastsResponse) : ForecastsResult()
 }
 

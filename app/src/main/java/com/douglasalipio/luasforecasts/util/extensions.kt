@@ -8,3 +8,11 @@ fun String.formatDate(): String {
     val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH)
     return formatter.format(parser.parse("2018-12-14T09:55:00"))
 }
+
+fun isInboundTime(): Boolean {
+    val format = SimpleDateFormat("HH", Locale.ENGLISH)
+    val hour = format.format(Calendar.getInstance().time).toInt()
+    if (hour in 0..12)
+        return false
+    return true
+}
