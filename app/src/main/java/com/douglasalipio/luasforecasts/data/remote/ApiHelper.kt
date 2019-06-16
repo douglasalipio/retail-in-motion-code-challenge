@@ -1,15 +1,21 @@
 package com.douglasalipio.luasforecasts.data.remote
 
-import androidx.lifecycle.MutableLiveData
-import com.douglasalipio.luasforecasts.data.FeatureResponse
+import com.douglasalipio.luasforecasts.data.ForecastsResponse
 import io.reactivex.Flowable
 import retrofit2.http.GET
+import retrofit2.http.Query
 
-const val BASE_URL = "https://www.mocky.io"
+const val BASE_URL = " https://luasforecasts.rpa.ie"
 
 interface ApiHelper {
 
-    @GET("/v2/5ce46666310000a191742d1c")
-    fun getData(): Flowable<List<FeatureResponse>>
+    //http://luasforecasts.rpa.ie/xml/get.ashx?action=forecast&stop=ran&encrypt=false
+    //https://luasforecasts.rpa.ie/get.ashx?action&stop=ran&encrypt=false
+    //https://luasforecasts.rpa.ie/xml/get.ashx?action&stop=ran&encrypt=false
+    @GET("/xml/get.ashx?action=forecast")
+    fun getForecasts(
+        @Query("stop") stop: String,
+        @Query("encrypt") encrypt: Boolean = false
+    ): Flowable<ForecastsResponse>
 
 }

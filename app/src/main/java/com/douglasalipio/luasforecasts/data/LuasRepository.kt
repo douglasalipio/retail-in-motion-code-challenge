@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class LuasRepository @Inject constructor(private val remoteDataSource: RemoteDataSource) : LuasDataSource {
 
-    override fun requestData() = remoteDataSource.requestData()
+    override fun requestForecasts(stop: String) = remoteDataSource.requestForecasts(stop)
 }

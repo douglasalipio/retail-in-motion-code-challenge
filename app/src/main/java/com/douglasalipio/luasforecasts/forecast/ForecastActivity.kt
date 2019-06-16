@@ -5,7 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.douglasalipio.luasforecasts.R
-import com.douglasalipio.luasforecasts.data.FeatureResponse
+import com.douglasalipio.luasforecasts.data.ForecastsResponse
 import com.douglasalipio.luasforecasts.data.ForecastsResult
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,13 +23,13 @@ class ForecastActivity : DaggerAppCompatActivity() {
             when (it) {
                 is ForecastsResult.Error -> showError()
                 is ForecastsResult.Loading -> showLoading()
-                is ForecastsResult.ForecastsData -> showFeature(it.data)
+                is ForecastsResult.ForecastsData -> showFeature(it.forecastResponse)
             }
         })
-        forecastModel.fetchData()
+        forecastModel.fetchData("ran")
     }
 
-    private fun showFeature(data: List<FeatureResponse>) {
+    private fun showFeature(data: ForecastsResponse) {
         Log.e("test", data.toString())
     }
 
@@ -38,6 +38,6 @@ class ForecastActivity : DaggerAppCompatActivity() {
     }
 
     private fun showLoading() {
-        refreshView?.setOnRefreshListener { forecastModel.fetchData() }
+        refreshView?.setOnRefreshListener { forecastModel.fetchData("ran") }
     }
 }

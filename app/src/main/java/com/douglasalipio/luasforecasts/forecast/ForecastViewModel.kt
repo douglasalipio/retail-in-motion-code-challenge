@@ -14,9 +14,9 @@ class ForecastViewModel @Inject constructor(private val repository: LuasReposito
     private val compositeDisposable = CompositeDisposable()
     var forecastsLiveData: MutableLiveData<ForecastsResult> = MutableLiveData()
 
-    fun fetchData() {
+    fun fetchData(stop: String) {
         compositeDisposable.add(
-            repository.requestData()
+            repository.requestForecasts(stop)
                 .subscribeOn(io())
                 .observeOn(ui())
                 .doOnSubscribe { ForecastsResult.Loading }

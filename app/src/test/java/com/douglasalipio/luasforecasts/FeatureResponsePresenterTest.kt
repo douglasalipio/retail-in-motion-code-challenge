@@ -30,9 +30,9 @@ class FeatureResponsePresenterTest {
 //    fun `should return a list of features`() {
 //        val features = listOfFeature()
 //        presenter.loadData()
-//        //`when`(luasRepository.requestData()).thenReturn(Flowable.just(features))
-//        //verify(luasRepository).requestData().subscribe()
-//        verify(interactor).requestData(capture(getFeatureCallbackCaptor))
+//        //`when`(luasRepository.requestForecasts()).thenReturn(Flowable.just(features))
+//        //verify(luasRepository).requestForecasts().subscribe()
+//        verify(interactor).requestForecasts(capture(getFeatureCallbackCaptor))
 //        getFeatureCallbackCaptor.value.onFeatureLoaded(features)
 //        verify(view).showData(features)
 //    }
@@ -40,7 +40,7 @@ class FeatureResponsePresenterTest {
 //    @Test
 //    fun `should show a error message`() {
 //        presenter.loadData()
-//        verify(interactor).requestData(capture(getFeatureCallbackCaptor))
+//        verify(interactor).requestForecasts(capture(getFeatureCallbackCaptor))
 //        getFeatureCallbackCaptor.value.onDataNotAvailable("data not available.")
 //        verify(view).showDataError()
 //    }

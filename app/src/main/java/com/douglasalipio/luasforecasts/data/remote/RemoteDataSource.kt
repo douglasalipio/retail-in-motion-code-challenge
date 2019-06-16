@@ -4,6 +4,6 @@ import com.douglasalipio.luasforecasts.data.LuasDataSource
 
 class RemoteDataSource(private val apiHelper: ApiHelper) : LuasDataSource {
 
-    override fun requestData() = apiHelper.getData()
+    override fun requestForecasts(stop: String) = apiHelper.getForecasts(stop)
 
 }

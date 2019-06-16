@@ -5,6 +5,6 @@ import io.reactivex.Flowable
 
 interface LuasDataSource {
 
-    fun requestData(): Flowable<List<FeatureResponse>>
+    fun requestForecasts(stop: String): Flowable<ForecastsResponse>
 
 }
