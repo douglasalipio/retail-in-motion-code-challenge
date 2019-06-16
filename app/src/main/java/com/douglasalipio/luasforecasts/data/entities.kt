@@ -3,8 +3,6 @@ package com.douglasalipio.luasforecasts.data
 import org.simpleframework.xml.*
 
 
-//data class ForecastsResponse(private val stopInfo: StopInfo)
-
 @Root(name = "stopInfo", strict = false)
 data class ForecastsResponse(
     @field:Attribute
@@ -28,13 +26,22 @@ data class Direction(
 
 data class Tram(
     @field:Attribute
-    var destination: String? = "",
+    var destination: String = "",
     @field:Attribute
-    var dueMins: String? = ""
+    var dueMins: String = ""
 )
 
 sealed class ForecastsResult {
     object Error : ForecastsResult()
     object Loading : ForecastsResult()
     data class ForecastsData(val forecastResponse: ForecastsResponse) : ForecastsResult()
+}
+
+fun MutableList<Direction>.get(directionName: String): Direction {
+    var direction = Direction()
+    forEach {
+        if (it.name == directionName)
+            direction = it
+    }
+    return direction
 }

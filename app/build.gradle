@@ -41,7 +41,7 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation ('com.squareup.retrofit2:converter-simplexml:2.0.0-beta3'){
+    implementation('com.squareup.retrofit2:converter-simplexml:2.0.0-beta3') {
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'
@@ -78,4 +78,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:2.21"
     kapt "com.google.dagger:dagger-compiler:2.21"
     kapt "com.google.dagger:dagger-android-processor:2.21"
+
+    implementation "com.xwray:groupie:2.3.0"
+    implementation "com.xwray:groupie-kotlin-android-extensions:2.3.0"
 }

@@ -22,62 +22,43 @@
                 android:id="@+id/destinationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Cabra/City center"
-                android:textSize="18sp"
+                tools:text="Bride's Glen"
+                android:textSize="@dimen/text_big"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@android:color/darker_gray"
+                android:layout_marginLeft="@dimen/base_margin"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/black"
                 app:layout_constraintTop_toTopOf="parent"
                 />
-
-        <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/dateText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="14/04/1986"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@+id/destinationText"
-                app:layout_constraintStart_toStartOf="@+id/destinationText"/>
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/timeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="15"
-                android:textSize="25sp"
+                android:textSize="@dimen/time_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@android:color/darker_gray"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="16dp"
+                android:textColor="@android:color/holo_green_light"
+                android:layout_marginRight="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin"
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="MIN"
-                android:textSize="13sp"
+                android:text="@string/text_min"
+                android:textSize="@dimen/time_text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@android:color/holo_green_light"
                 app:layout_constraintTop_toBottomOf="@+id/timeText"
                 app:layout_constraintEnd_toEndOf="@+id/timeText"
-                android:id="@+id/appCompatTextView3"/>
-
-        <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:background="@android:color/holo_green_dark"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/timeText"/>
+                android:id="@+id/timeLabel"
+                android:layout_marginStart="@dimen/time_margin"
+                android:layout_marginLeft="@dimen/time_margin"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
