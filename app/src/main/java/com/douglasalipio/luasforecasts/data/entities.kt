@@ -1,21 +1,29 @@
 package com.douglasalipio.luasforecasts.data
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import org.simpleframework.xml.Root
 
 
-data class FeatureResponse(
-    @Expose
-    @SerializedName("name")
-    private var statusCode: String,
-
-    @Expose
-    @SerializedName("surname")
-    private var message: String
+@Root(name = "stopInfo", strict = false)
+data class ForecastsResponse(
+    var stop: String,
+    var created: String,
+    var message: String,
+    var stopAbv: String,
+    var direction: List<Direction>
 )
 
-sealed class FeatureResult {
-    object Error : FeatureResult()
-    object Loading : FeatureResult()
-    data class FeatureData(val data: List<FeatureResponse>) : FeatureResult()
+data class Tram(
+    var destination: String,
+    var dueMins: String
+)
+
+data class Direction(
+    var name: String,
+    var tram: Tram
+)
+
+sealed class ForecastsResult {
+    object Error : ForecastsResult()
+    object Loading : ForecastsResult()
+    data class ForecastsData(val data: List<ForecastsResponse>) : ForecastsResult()
 }

@@ -65,5 +65,5 @@ fastlane/test_output
 fastlane/readme.md
 .gradle/
 .idea/workspace.xml
- app/app.iml
- .gradle/5.1.1/
+app/app.iml
+.gradle/5.1.1/

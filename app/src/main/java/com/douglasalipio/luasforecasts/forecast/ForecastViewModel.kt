@@ -3,7 +3,7 @@ package com.douglasalipio.luasforecasts.forecast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.douglasalipio.luasforecasts.data.LuasRepository
-import com.douglasalipio.luasforecasts.data.FeatureResult
+import com.douglasalipio.luasforecasts.data.ForecastsResult
 import com.douglasalipio.luasforecasts.util.io
 import com.douglasalipio.luasforecasts.util.ui
 import io.reactivex.disposables.CompositeDisposable
@@ -12,17 +12,17 @@ import javax.inject.Inject
 class ForecastViewModel @Inject constructor(private val repository: LuasRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    var featureLiveData: MutableLiveData<FeatureResult> = MutableLiveData()
+    var forecastsLiveData: MutableLiveData<ForecastsResult> = MutableLiveData()
 
     fun fetchData() {
         compositeDisposable.add(
             repository.requestData()
                 .subscribeOn(io())
                 .observeOn(ui())
-                .doOnSubscribe { FeatureResult.Loading }
-                .doOnError { FeatureResult.Error }
+                .doOnSubscribe { ForecastsResult.Loading }
+                .doOnError { ForecastsResult.Error }
                 .subscribe {
-                    featureLiveData.postValue(FeatureResult.FeatureData(it))
+                    forecastsLiveData.postValue(ForecastsResult.ForecastsData(it))
                 }
         )
     }
