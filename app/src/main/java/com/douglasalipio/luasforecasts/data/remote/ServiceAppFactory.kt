@@ -42,5 +42,4 @@ object ServiceAppFactory {
             HttpLoggingInterceptor.Level.NONE
         return logging
     }
-
 }

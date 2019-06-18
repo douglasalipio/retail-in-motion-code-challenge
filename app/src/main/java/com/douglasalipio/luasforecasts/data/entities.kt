@@ -1,6 +1,9 @@
 package com.douglasalipio.luasforecasts.data
 
-import org.simpleframework.xml.*
+import org.simpleframework.xml.Attribute
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.ElementList
+import org.simpleframework.xml.Root
 
 
 @Root(name = "stopInfo", strict = false)

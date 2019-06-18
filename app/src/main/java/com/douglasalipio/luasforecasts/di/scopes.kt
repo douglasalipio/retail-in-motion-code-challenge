@@ -1,5 +1,6 @@
 package com.douglasalipio.luasforecasts.di
 
+import javax.inject.Qualifier
 import javax.inject.Scope
 
 @Scope

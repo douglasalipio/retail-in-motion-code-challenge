@@ -1,14 +1,12 @@
 package com.douglasalipio.luasforecasts.forecast
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.Observer
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.douglasalipio.luasforecasts.R
 import com.douglasalipio.luasforecasts.data.Direction
 import com.douglasalipio.luasforecasts.data.ForecastsResponse
-import com.douglasalipio.luasforecasts.data.ForecastsResult
 import com.douglasalipio.luasforecasts.data.get
+import com.douglasalipio.luasforecasts.R
 import com.douglasalipio.luasforecasts.forecast.adapter.ForecastHead
 import com.douglasalipio.luasforecasts.forecast.adapter.ForecastItem
 import com.douglasalipio.luasforecasts.util.formatDate
@@ -21,41 +19,31 @@ import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.forecast_content.*
 import javax.inject.Inject
 
-class ForecastActivity : DaggerAppCompatActivity() {
+class ForecastActivity : DaggerAppCompatActivity(), ForecastContract.View {
 
     @Inject
-    internal lateinit var forecastModel: ForecastViewModel
+    internal lateinit var forecastPresenter: ForecastContract.Presenter
     private val groupAdapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.forecast_view)
-        forecastModel.forecastResultLiveData.observe(this, Observer {
-            when (it) {
-                is ForecastsResult.Error -> showError()
-                is ForecastsResult.Loading -> stateIndicator(it.status)
-                is ForecastsResult.ForecastsData -> showForecasts(it.forecastResponse)
-            }
-        })
-        forecastModel.fetchData(getStop())
+        forecastPresenter.takeView(this)
+        forecastPresenter.fetchForecasts()
         refreshView?.setOnRefreshListener {
             groupAdapter.clear()
-            forecastModel.fetchData(getStop())
+            forecastPresenter.fetchForecasts()
+            stateIndicator(false)
         }
     }
 
-    private fun getStop(): String {
-        return if (isInboundTime()) this.getString(R.string.inbounds_destination)
-        else this.getString(R.string.outbounds_destination)
-    }
-
-    private fun showForecasts(forecastsResponse: ForecastsResponse) {
+    override fun showForecasts(forecast: ForecastsResponse) {
         forecastRecyclerView?.let {
             it.adapter = groupAdapter
             it.layoutManager = LinearLayoutManager(this)
-            addSections(getDirection(forecastsResponse), forecastsResponse.created.formatDate())
+            addSections(getDirection(forecast), forecast.created.formatDate())
         }
-        initToolbar(forecastsResponse)
+        initToolbar(forecast)
     }
 
     private fun getDirection(forecastsResponse: ForecastsResponse): Direction {
@@ -73,12 +61,9 @@ class ForecastActivity : DaggerAppCompatActivity() {
 
     }
 
-    private fun showError() {
-        Toast.makeText(this, getString(R.string.forecasts_error_message), Toast.LENGTH_LONG).show()
-    }
-
-    private fun stateIndicator(isLineStatus: Boolean) {
-        refreshView?.isRefreshing = isLineStatus
+    override fun showDataError() {
+        stateIndicator(false)
+        Log.e("test", "feature error.")
     }
 
     private fun initToolbar(forecastsResponse: ForecastsResponse) {
@@ -87,4 +72,9 @@ class ForecastActivity : DaggerAppCompatActivity() {
             it.subtitle = forecastsResponse.message
         }
     }
+
+    private fun stateIndicator(isLineStatus: Boolean) {
+        refreshView?.isRefreshing = isLineStatus
+    }
+
 }

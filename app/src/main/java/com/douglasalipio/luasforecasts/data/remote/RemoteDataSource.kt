@@ -1,9 +1,9 @@
 package com.douglasalipio.luasforecasts.data.remote
 
-import com.douglasalipio.luasforecasts.data.LuasDataSource
+import com.douglasalipio.luasforecasts.data.AppDataSource
 
-class RemoteDataSource(private val apiHelper: ApiHelper) : LuasDataSource {
+class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 
-    override fun requestForecasts(stop: String) = apiHelper.getForecasts(stop)
+    override fun requestData(stop : String) = apiHelper.getForecasts(stop)
 
 }

@@ -3,6 +3,7 @@ package com.douglasalipio.luasforecasts.util
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 fun String.formatDate(): String {
     val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
     val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH)
@@ -15,4 +16,8 @@ fun isInboundTime(): Boolean {
     if (hour in 0..12)
         return false
     return true
+}
+
+fun getStop(): String {
+    return if (isInboundTime()) "STI" else "MAR"
 }

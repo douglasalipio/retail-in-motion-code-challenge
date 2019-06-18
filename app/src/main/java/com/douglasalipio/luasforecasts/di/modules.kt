@@ -2,8 +2,8 @@ package com.douglasalipio.luasforecasts.di
 
 import android.app.Application
 import android.content.Context
-import com.douglasalipio.luasforecasts.data.LuasDataSource
-import com.douglasalipio.luasforecasts.data.LuasRepository
+import com.douglasalipio.luasforecasts.data.AppDataSource
+import com.douglasalipio.luasforecasts.data.AppRepository
 import com.douglasalipio.luasforecasts.data.remote.ApiHelper
 import com.douglasalipio.luasforecasts.data.remote.RemoteDataSource
 import com.douglasalipio.luasforecasts.data.remote.ServiceAppFactory
@@ -35,8 +35,8 @@ class RepositoryModule {
 
     @Provides
     @Reusable
-    internal fun provideAppRepository(remoteDataSource: RemoteDataSource): LuasDataSource =
-        LuasRepository(remoteDataSource)
+    internal fun provideAppRepository(remoteDataSource: RemoteDataSource): AppDataSource =
+        AppRepository(remoteDataSource)
 }
 
 @Module

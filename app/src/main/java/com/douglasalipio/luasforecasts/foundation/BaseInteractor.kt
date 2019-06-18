@@ -1,0 +1,3 @@
+package com.douglasalipio.luasforecasts.foundation
+
+interface BaseInteractor
